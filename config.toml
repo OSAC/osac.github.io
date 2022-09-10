@@ -65,6 +65,20 @@ theme = "hugo-dpsg"
   # bitbucket = "username"
   email = "osac2gether@gmail.com"
 
+# Custom menu items, normally controlled via front matter in /content files
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+
 # Custom social links
 # [[Params.widgets.social.custom]]
   # title = "Youtube"

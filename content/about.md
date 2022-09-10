@@ -1,32 +1,8 @@
 ---
-title: "Test post"
-date: 2022-08-28T14:53:14+05:45
-draft: false
-description: "Example article description"
-categories:
-  - "event"
-  - "2022"
-tags:
-  - "hackfest"
-  - "osm"
-  - "2022"
-
-# Theme-Defined params
-thumbnail: "img/event.png" # Thumbnail image
-thumbnail_alt: "Thumbnail" # alt text for thumbnail image, be screen reader friendly!
-thumbnail_hide_post: false # Hide thumbnail on single post view
-lead: "Example lead - highlighted near the title" # Lead text
-pager: true # Enable pager navigation (prev/next) for specific page
-toc: true # Enable Table of Contents for specific page
-sidebar: "right" # Enable sidebar (on the right side) per page
-widgets: # Enable sidebar widgets in given order per page
-  - "search"
-  - "recent"
-  - "taglist"
-sitemap_hide: false # Do not add this page to the sitemap
+title: "IT circle group of Ascol"
+page: true
+toc: true
 ---
-
-## Welcome to the github page of OSAC.
 
 ### Who we are?
 OSAC (Open Source ASCOL Circle) is a group of lerners based primarily on Computer Science and Information Technologies students from Amrit Science College, Tribhuvan University, Nepal.
