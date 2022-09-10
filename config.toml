@@ -1,7 +1,7 @@
 baseURL = "https://osac.github.io"
-languageCode = "en-us"
 title = "Open Source Ascol Circle"
-DefaultContentLanguage = "en-us"
+languageCode = "en"
+DefaultContentLanguage = "en"
 paginate = "10" # No of posts per page
 theme = "hugo-dpsg"
 
@@ -9,18 +9,18 @@ theme = "hugo-dpsg"
   description = "Website of Open Source Ascol Circle OSAC, Amrit Science Campus ASCOL, Tribhuwan University, Nepal" # Site description. Used in meta description
   copyright = "OSAC Ascol" # Footer copyright holder, otherwise will use site title
   opengraph = true # Enable OpenGraph if true
-  # schema = true # Enable Schema
-  # twitter_cards = true # Enable Twitter Cards if true
+  schema = true # Enable Schema
+  twitter_cards = true # Enable Twitter Cards if true
   readmore = false # Show "Read more" button in list if true
   # authorbox = true # Show authorbox at bottom of pages if true
   toc = true # Enable Table of Contents
   pager = true # Show pager navigation (prev/next links) at the bottom of pages if true
-  indexPager = false # Show pager navigation on index page
+  indexPager = true # Show pager navigation on index page
   post_meta = ["author", "date", "categories"] # Order of post meta information
   mainSections = ["post", "blog", "news"] # Specify section pages to show on home page and the "Recent articles" widget
   photosSections = ["photos"] # Specify section pages to show on home page and the "Recent photos" widget
   photoTag = "photos" # Specify one tag to show on home page and the "Recent photos" widget. Similar as photoSections, but with 1 tag instead of 1 or multiple sections
-  dateformat = "02.01.2006" # Change the format of dates
+  dateformat = "Jan 2, 2006" # Change the format of dates
   # customCSS = ["css/custom.css"] # Include custom CSS files, can also be used per-page as front matter attribute
   # customJS = ["js/custom.js"] # Include custom JS files
   # customPartial = "piwik.html" # Include custom partials at the end of the page, e.g. tracking codes
@@ -32,8 +32,8 @@ theme = "hugo-dpsg"
 [Params.logo]
   image = "img/osaclogo.png" # Logo image. Path relative to "static"
   image_alt = "OSAC Logo" # alt text for logo image, be screen reader friendly!
-  # header = "img/header.jpg" # Header image. Path relative to "static"
-  # title = "DPSG local group" # Logo title, otherwise will use site title
+  header = "img/header.jpg"
+  title = "Open Source Ascol Circle"
   subtitle = "Welcome to Open Source Ascol Circle (OSAC) website" # Logo subtitle
 
 [Params.sidebar]
@@ -41,13 +41,9 @@ theme = "hugo-dpsg"
   list = "left"  # Configure layout for list pages
   single = false # Configure layout for single pages
   # Enable widgets in given order
-  widgets = ["search", "recent", "recent_photos", "recent_photos_tags", "categories", "taglist", "social"]
+  widgets = ["search", "recent", "taglist", "recent_photos", "recent_photos_tags", "categories", "social"]
   # alternatively "ddg-search" can be used, to search via DuckDuckGo
   # widgets = ["ddg-search", "recent", "categories", "taglist", "social", "languages"]
-
-[Params.footer]
-  text = "[Imprint and Privacy](/imprint)" # Extra text in footer row, understands markdown
-  # right = "Donate!" # Right-aligned text in footer row, optional, understands markdown
 
 [Params.widgets]
   recent_num = 5 # Set the number of articles in the "Recent articles" widget
@@ -65,6 +61,10 @@ theme = "hugo-dpsg"
   # bitbucket = "username"
   email = "osac2gether@gmail.com"
 
+[Params.footer]
+  text = "[Imprint and Privacy](/imprint)" # Extra text in footer row, understands markdown
+  # right = "Donate!" # Right-aligned text in footer row, optional, understands markdown
+
 # Custom menu items, normally controlled via front matter in /content files
 [menu]
   [[menu.main]]
@@ -78,6 +78,12 @@ theme = "hugo-dpsg"
     name = "About"
     url = "/about/"
     weight = 2
+
+  [[menu.main]]
+    identifier = "events"
+    name = "Past Events"
+    url = "/categories/recent-events/"
+    weight = 3
 
 # Custom social links
 # [[Params.widgets.social.custom]]

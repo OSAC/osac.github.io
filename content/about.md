@@ -1,5 +1,5 @@
 ---
-title: "IT circle group of Ascol"
+title: "IT circle of Ascol"
 page: true
 toc: true
 ---
