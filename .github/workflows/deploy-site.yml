@@ -30,7 +30,7 @@ jobs:
     - name: Custom files
       run: |
           echo "osac.org.np" > ./public/CNAME
-          echo "" > ./public/nojekyll
+          echo "" > ./public/.nojekyll
 
     # push the generated content into the `gh-pages` branch.
     - name: Deploy
