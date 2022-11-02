@@ -27,6 +27,11 @@ jobs:
     - name: Build
       run: hugo --minify
 
+    - name: Custom files
+      run: |
+          echo "osac.org.np" > ./public/CNAME
+          echo "" > ./public/nojekyll
+
     # push the generated content into the `gh-pages` branch.
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
