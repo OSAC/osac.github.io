@@ -4,9 +4,6 @@ page: true
 toc: true
 ---
 
-### Who we are?
-OSAC (Open Source ASCOL Circle) is a group of lerners based primarily on Computer Science and Information Technologies students from Amrit Science College, Tribhuvan University, Nepal.
-
 We LOVE Open Source Softwares/Open Source Philosophy.
 
 
