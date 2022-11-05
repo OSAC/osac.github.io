@@ -15,6 +15,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           repository: osac/betadeploy
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MACHINE_USER_TOKEN }}
           event-type: osac-pr-preview-build
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "prId": "${{github.event.pull_request.number}}"}'
