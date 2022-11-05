@@ -17,6 +17,7 @@ jobs:
         with:
           submodules: true
           ref: ${{github.ref}}
+          path: site
 
       # install Hugo
       - name: Setup Hugo
@@ -27,31 +28,34 @@ jobs:
 
       # build website
       - name: Build
-        run: hugo --minify
+        run: |
+            cd site
+            hugo --minify
 
       # checkout to the betadeploy repository to host pr previews
       - name: Clone betadeploy
         uses: actions/checkout@v3
         with:
           repository: 'osac/betadeploy'
-          path: 'betadeploy'
+          path: betadeploy
+          token: ${{secrets.MACHINE_USER_TOKEN}}
+          ref: gh-pages
 
       - name: Custom files
         run: |
-            pwd
-            ls
-            ls -la $GITHUB_WORKSPACE
-            echo "beta.osac.org.np" > $GITHUB_WORKSPACE/betadeploy/CNAME
-            echo "" > $GITHUB_WORKSPACE/betadeploy/.nojekyll
-            mv public/ $GITHUB_WORKSPACE/betadeploy/${{github.event.pull_request.number}}
+            echo "beta.osac.org.np" > ./betadeploy/CNAME
+            echo "" > ./betadeploy/.nojekyll
+            mv site/public ./betadeploy/${{github.event.pull_request.number}}
             ls -la $GITHUB_WORKSPACE/betadeploy
 
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          external_repository: osac/betadeploy
-          publish_dir: $GITHUB_WORKSPACE/betadeploy
-          publish_branch: gh-pages
-          personal_token: ${{ secrets.MACHINE_USER_TOKEN }}
+      - name: Commit and push
+        run: |
+            cd betadeploy
+            git add .
+            git config --global user.name 'ssn212'
+            git config --global user.email 'smartstudionepali@gmail.com'
+            git commit -m "deploy: ${{github.sha}}"
+            git push
 
       - name: Sleep to make sure page gets updated
         run: sleep 1m
