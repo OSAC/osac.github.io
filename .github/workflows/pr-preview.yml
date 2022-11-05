@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Clone PR
+        uses: actions/checkout@v3
         with:
+          submodules: true
           ref: ${{github.ref}}
 
       # install Hugo
@@ -27,24 +29,28 @@ jobs:
       - name: Build
         run: hugo --minify
 
-
       # checkout to the betadeploy repository to host pr previews
-      - uses: actions/checkout@v3
+      - name: Clone betadeploy
+        uses: actions/checkout@v3
         with:
           repository: 'osac/betadeploy'
           path: 'betadeploy'
 
       - name: Custom files
         run: |
+            pwd
+            ls
+            ls -la $GITHUB_WORKSPACE
             echo "beta.osac.org.np" > $GITHUB_WORKSPACE/betadeploy/CNAME
             echo "" > $GITHUB_WORKSPACE/betadeploy/.nojekyll
-            mv ./public $GITHUB_WORKSPACE/betadeploy/${{github.event.pull_request.number}}
+            mv public/ $GITHUB_WORKSPACE/betadeploy/${{github.event.pull_request.number}}
+            ls -la $GITHUB_WORKSPACE/betadeploy
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
           external_repository: osac/betadeploy
           publish_dir: $GITHUB_WORKSPACE/betadeploy
-          public_branch: gh-pages
+          publish_branch: gh-pages
           personal_token: ${{ secrets.MACHINE_USER_TOKEN }}
 
       - name: Sleep to make sure page gets updated
