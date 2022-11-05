@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-          ref: ${{github.ref}}
+          ref: refs/pull/${{ github.event.pull_request.number }}/merge
           path: site
 
       # install Hugo
@@ -30,6 +30,7 @@ jobs:
       - name: Build
         run: |
             cd site
+            sed -i '1 s/osac.org.np/beta.osac.org.np\/2/' config.toml
             hugo --minify
 
       # checkout to the betadeploy repository to host pr previews
