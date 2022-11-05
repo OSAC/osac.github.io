@@ -1,0 +1,77 @@
+name: Deploy PR previews
+concurrency: preview-${{ github.ref }}
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{github.ref}}
+
+      # install Hugo
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      # build website
+      - name: Build
+        run: hugo --minify
+
+
+      # checkout to the betadeploy repository to host pr previews
+      - uses: actions/checkout@v3
+        with:
+          repository: 'osac/betadeploy'
+          path: 'betadeploy'
+
+      - name: Custom files
+        run: |
+            echo "beta.osac.org.np" > $GITHUB_WORKSPACE/betadeploy/CNAME
+            echo "" > $GITHUB_WORKSPACE/betadeploy/.nojekyll
+            mv ./public $GITHUB_WORKSPACE/betadeploy/${{github.event.pull_request.number}}
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          external_repository: osac/betadeploy
+          publish_dir: $GITHUB_WORKSPACE/betadeploy
+          public_branch: gh-pages
+          personal_token: ${{ secrets.MACHINE_USER_TOKEN }}
+
+      - name: Sleep to make sure page gets updated
+        run: sleep 1m
+        shell: bash
+
+      - name: comment Preview Ready
+        if: ${{ success() }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            ### ✅ Deploy Preview for OSAC ready!
+            https://beta.osac.org.np/${{ github.event.pull_request.number }} |
+
+            | Name | Link |
+            |-|-|
+            | 🔨 Latest commit | ${{ github.event.pull_request.head.sha }} |
+            | 🔍 Latest deploy log | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
+
+
+      - if: ${{ failure() }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            ### ❌ Deploy Preview for OSAC failed.
+
+            | Name | Link |
+            |-|-|
+            | 🔨 Latest commit | ${{ github.event.pull_request.head.sha }} |
+            | 🔍 Latest deploy log | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
