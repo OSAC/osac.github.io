@@ -1,21 +1,23 @@
 name: Deploy PR previews
-concurrency: preview-${{ github.ref }}
+concurrency: preview-${{ github.event.pull_request.head.sha }}
 on:
-  pull_request:
+  pull_request_target:
     types:
       - opened
       - reopened
       - synchronize
-      - closed
+
 jobs:
-  deploy-preview:
+  Build:
     runs-on: ubuntu-latest
+
     steps:
-      # checkout to the commit that has been pushed
-      - uses: actions/checkout@v3
+      - name: Clone PR
+        uses: actions/checkout@v3
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: true
+          ref: refs/pull/${{ github.event.pull_request.number }}/merge
+          path: site
 
       # install Hugo
       - name: Setup Hugo
@@ -26,16 +28,63 @@ jobs:
 
       # build website
       - name: Build
-        run: hugo --minify
+        run: |
+            cd site
+            sed -i '1 s/osac.org.np/betadeploy.osac.org.np\/${{github.event.pull_request.number}}/' config.toml
+            cat config.toml | head -n 1
+            hugo --minify
+
+      # checkout to the betadeploy repository to host pr previews
+      - name: Clone betadeploy
+        uses: actions/checkout@v3
+        with:
+          repository: 'osac/betadeploy'
+          path: betadeploy
+          token: ${{secrets.MACHINE_USER_TOKEN}}
+          ref: gh-pages
 
       - name: Custom files
         run: |
-            echo "osac.org.np" > ./public/CNAME
-            echo "" > ./public/.nojekyll
+            echo "betadeploy.osac.org.np" > ./betadeploy/CNAME
+            echo "" > ./betadeploy/.nojekyll
+            rm -rf ./betadeploy/${{github.event.pull_request.number}}
+            mv site/public ./betadeploy/${{github.event.pull_request.number}}
 
-      - uses: rossjrw/pr-preview-action@v1
+      - name: Commit and push
+        run: |
+            cd betadeploy
+            git add .
+            git config --global user.name 'ssn212'
+            git config --global user.email 'smartstudionepali@gmail.com'
+            git commit -m "deploy: ${{ github.event.pull_request.head.sha }} "
+            git push
+
+      - name: Sleep to make sure page gets updated
+        run: sleep 10s
+        shell: bash
+
+      - name: comment Preview Ready
+        if: ${{ success() }}
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          source-dir: ./public
-          preview-branch: gh-pages
-          umbrella-dir: pr-preview
-          action: auto
+          message: |
+            ### ✅ Deploy Preview for OSAC ready! [CLICK HERE TO VIEW](https://betadeploy.osac.org.np/${{ github.event.pull_request.number }})
+
+            Site Link: https://betadeploy.osac.org.np/${{ github.event.pull_request.number }}
+
+            | Name | Link |
+            |-|-|
+            | 🔨 Latest commit | ${{ github.event.pull_request.head.sha }} |
+            | 🔍 Latest deploy log | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
+
+
+      - if: ${{ failure() }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            ### ❌ Deploy Preview for OSAC failed.
+
+            | Name | Link |
+            |-|-|
+            | 🔨 Latest commit | ${{ github.event.pull_request.head.sha }} |
+            | 🔍 Latest deploy log | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
