@@ -1,6 +1,7 @@
 baseURL = "https://osac.org.np"
 title = "Open Source Ascol Circle"
 languageCode = "en"
+canonifyURLs = true
 DefaultContentLanguage = "en"
 paginate = "10" # No of posts per page
 theme = "hugo-dpsg"
