@@ -30,7 +30,8 @@ jobs:
       - name: Build
         run: |
             cd site
-            sed -i '1 s/osac.org.np/beta.osac.org.np\/2/' config.toml
+            sed -i '1 s/osac.org.np/beta.osac.org.np\/${{github.event.pull_request.number}}/' config.toml
+            cat config.toml | head -n 1
             hugo --minify
 
       # checkout to the betadeploy repository to host pr previews
