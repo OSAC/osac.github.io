@@ -36,6 +36,7 @@ Also kudos to every OSAC Executives and participants for making this session hap
 
 ![Group photo of members](/img/osac-mapathon-2022/group-photo.jpg "Group Photo")
 ![Photo](/img/osac-mapathon-2022/photo.jpg "Group Photo")
+![Winners](/img/osac-mapathon-2022/winners.png "Photo of winners")
 ![Photo 1](/img/osac-mapathon-2022/photo-1.jpg "Group Photo")
 ![Photo 2](/img/osac-mapathon-2022/photo-2.jpg "Group Photo")
 ![Photo 3](/img/osac-mapathon-2022/photo-3.jpg "Group Photo")
