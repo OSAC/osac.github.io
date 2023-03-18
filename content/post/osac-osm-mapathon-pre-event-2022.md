@@ -1,5 +1,5 @@
 ---
-title: OSAC Mapathon Pre-Event
+title: OSAC Mapathon Pre-Event 2022
 lead: Join us for an intro to OSM on discord
 date: 2023-01-27
 linktitle: osac mapathon pre event osm
@@ -16,7 +16,7 @@ tags:
   - "2023"
 
 # Theme-Defined params
-thumbnail: "/img/mapping-on-osm-2022/banner.jpg" # Thumbnail image
+thumbnail: "/img/osac-mapathon-pre-event-2022/banner.jpg" # Thumbnail image
 thumbnail_alt: "Thumbnail" # alt text for thumbnail image, be screen reader friendly!
 thumbnail_hide_post: false # Hide thumbnail on single post view
 sidebar: "right" # Enable sidebar (on the right side) per page
@@ -32,4 +32,5 @@ If you haven't yet registered for OSAC Mapathon. Register here: https://forms.gl
 
 ## Event Archive
 
-![View youtube recording](https://www.youtube.com/watch?v=-ev5RRliY44)
+[View youtube recording](https://www.youtube.com/watch?v=-ev5RRliY44)
+{{< youtube -ev5RRliY44 >}}
