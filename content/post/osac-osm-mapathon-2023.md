@@ -1,5 +1,5 @@
 ---
-title: OSAC Mapathon OpenStreetmaps 2022
+title: OSAC Mapathon OpenStreetmaps 2023
 lead: Mapping competition, Supported By Open Mapping Hub
 date: 2023-01-29
 linktitle: osac mapathon osm
@@ -15,7 +15,7 @@ tags:
   - "2023"
 
 # Theme-Defined params
-thumbnail: "/img/osac-mapathon-2022/banner.jpg" # Thumbnail image
+thumbnail: "/img/osac-mapathon-2023/banner.jpg" # Thumbnail image
 thumbnail_alt: "Thumbnail" # alt text for thumbnail image, be screen reader friendly!
 thumbnail_hide_post: false # Hide thumbnail on single post view
 sidebar: "right" # Enable sidebar (on the right side) per page
@@ -34,12 +34,12 @@ Also kudos to every OSAC Executives and participants for making this session hap
 
 ## Event Gallery
 
-![Group photo of members](/img/osac-mapathon-2022/group-photo.jpg "Group Photo")
-![Photo](/img/osac-mapathon-2022/photo.jpg "Group Photo")
-![Winners](/img/osac-mapathon-2022/winners.png "Photo of winners")
-![Photo 1](/img/osac-mapathon-2022/photo-1.jpg "Group Photo")
-![Photo 2](/img/osac-mapathon-2022/photo-2.jpg "Group Photo")
-![Photo 3](/img/osac-mapathon-2022/photo-3.jpg "Group Photo")
-![Photo 4](/img/osac-mapathon-2022/photo-4.jpg "Group Photo")
-![Photo 5](/img/osac-mapathon-2022/photo-5.jpg "Group Photo")
-![Photo 6](/img/osac-mapathon-2022/photo-6.jpg "Group Photo")
+![Group photo of members](/img/osac-mapathon-2023/group-photo.jpg "Group Photo")
+![Photo](/img/osac-mapathon-2023/photo.jpg "Group Photo")
+![Winners](/img/osac-mapathon-2023/winners.png "Photo of winners")
+![Photo 1](/img/osac-mapathon-2023/photo-1.jpg "Group Photo")
+![Photo 2](/img/osac-mapathon-2023/photo-2.jpg "Group Photo")
+![Photo 3](/img/osac-mapathon-2023/photo-3.jpg "Group Photo")
+![Photo 4](/img/osac-mapathon-2023/photo-4.jpg "Group Photo")
+![Photo 5](/img/osac-mapathon-2023/photo-5.jpg "Group Photo")
+![Photo 6](/img/osac-mapathon-2023/photo-6.jpg "Group Photo")
