@@ -25,7 +25,7 @@ sitemap_hide: false # Do not add this page to the sitemap
 
 Learning, exploring and growing together is always so fun and inspiring. We successfully conducted "Getting started with App development based on OpenStreetMap". The event was fruitful thanks to the combined effort of OSAC team, our dear mentor Ichchha Moktan and all of the participants.
 
-Ms Ichchha guided us participants how to harness OSM in apps, what specific benefits it provides and answered our queries about specific caveats and usecases. About 30 Participants both from BIT and CSIT were present the event. The event duration was about 1 hour and 30 minutes.
+Ms Ichchha guided us participants how to harness OSM in apps, what specific benefits it provides and answered our queries about specific caveats and usecases. About 40 Participants both from BIT and CSIT were present the event. The event duration was about 1 hour and 30 minutes.
 
 Special thanks to The Open Mapping Hub - Asia Pacific for supporting us and Ichchha Moktan didi for giving us her precious time and helping young minds getting a start in app development and OSM.
 
