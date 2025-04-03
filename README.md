@@ -18,7 +18,7 @@ git clone --recurse-submodules https://github.com/osac/osac.github.io
 Then use,
 
 ```
-go server -D
+hugo server -D
 ```
 
 To open up a localhost server. Go to browser at http://localhost:1313 or the url specified in output to above command.
@@ -29,4 +29,4 @@ Change the front matter tags to appropirate one and write your post in markdown.
 
 If you need to add images, put them in /static/img/ folder by creating a directory same as post name and placing images inside that directory.
 
-You can view your changes through the `go server -D` command as mentioned above.
+You can view your changes through the `hugo server -D` command as mentioned above.
