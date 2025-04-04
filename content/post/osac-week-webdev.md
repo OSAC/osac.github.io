@@ -16,6 +16,8 @@ tags:
   - "2024"
   - "React"
   - "Github"
+  - "HTML"
+  - "CSS"
 
 # Theme-Defined params
 thumbnail: "/img/osacweek-webdev/SushantSuwal.png"
