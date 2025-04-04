@@ -17,7 +17,7 @@ tags:
   - "2024"
 
 # Theme-Defined params
-thumbnail: "/img/intro-community-1/inro-poster-yunika.png"
+thumbnail: "/img/intro-community-1/yunikaDidi.png"
 thumbnail_alt: "Github Essentials Poster of Yunika Bajracharya"
 thumbnail_hide_post: false
 sidebar: "right"
