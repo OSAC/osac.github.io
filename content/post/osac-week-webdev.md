@@ -16,9 +16,7 @@ tags:
   - "2024"
   - "React"
   - "Github"
-  
-  
-  
+
 # Theme-Defined params
 thumbnail: "/img/osacweek-webdev/SushantSuwal.png"
 thumbnail_alt: "Poster of Frotnend Dev of Sushant Suwal"
